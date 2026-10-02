@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip Together - Магазин</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#8b5cf6', // purple-500
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        },
+                        accent: {
+                            500: '#d946ef', // fuchsia-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a; /* slate-900 */
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-hidden">
+    <!-- Background glows -->
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent-500 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+
+    <header class="py-6 px-6 md:px-12 flex justify-between items-center z-10 border-b border-white/10 bg-slate-900/80 sticky top-0 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <!-- Icon placeholder, could be SVG -->
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-500/30">C</div>
+            <span class="text-xl font-bold tracking-tight">Clip Together</span>
+        </div>
+        <nav class="hidden md:flex gap-8 font-medium text-slate-300">
+            <a href="#subscriptions" class="hover:text-white transition">Подписки</a>
+            <a href="#clips" class="hover:text-white transition">Скрепки</a>
+        </nav>
+    </header>
+
+    <main class="flex-1 z-10 w-full max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center">
+        <div class="text-center max-w-3xl mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
+                Официальный <span class="gradient-text">Магазин</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400">
+                Покупайте подписки и скрепки напрямую через наш сайт. Быстрее, выгоднее и без комиссий платформ.
+            </p>
+        </div>
+
+        <!-- Subscriptions Section -->
+        <section id="subscriptions" class="w-full mb-24 pt-8">
+            <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                <span class="w-8 h-1 bg-brand-500 rounded-full"></span> Подписки
+            </h2>
+            <p class="text-slate-400 mb-8">Открой все возможности платформы с Premium</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Monthly -->
+                <div class="card rounded-3xl p-8 flex flex-col relative transition-transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-bold text-white mb-2">1 Месяц</h3>
+                    <p class="text-slate-400 text-sm mb-6">Идеально для старта</p>
+                    <div class="text-4xl font-extrabold mb-6">499 ₽ <span class="text-lg font-normal text-slate-500">/мес</span></div>
+                    
+                    <ul class="space-y-3 mb-8 text-slate-300 flex-1">
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Безлимитные лайки</li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Кто вас лайкнул</li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Расширенные фильтры</li>
+                    </ul>
+                    
+                    <a href="#" onclick="alert('Интеграция со Stripe/RevenueCat будет добавлена позже')" class="w-full py-4 rounded-xl font-bold text-center bg-slate-800 hover:bg-slate-700 transition border border-slate-700">Выбрать</a>
+                </div>
+
+                <!-- Yearly (Popular) -->
+                <div class="card rounded-3xl p-8 flex flex-col relative transition-transform hover:-translate-y-2 border-brand-500/50 shadow-2xl shadow-brand-500/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-500 to-accent-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Выгодно</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">12 Месяцев</h3>
+                    <p class="text-slate-400 text-sm mb-6">Экономия 50%</p>
+                    <div class="text-4xl font-extrabold mb-6">249 ₽ <span class="text-lg font-normal text-slate-500">/мес</span></div>
+                    
+                    <ul class="space-y-3 mb-8 text-slate-300 flex-1">
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Все функции 1 месяца</li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Приоритет в выдаче</li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> Значок Premium</li>
+                        <li class="flex gap-3 items-start"><span class="text-brand-500">✓</span> +10 Скрепок в месяц</li>
+                    </ul>
+                    
+                    <a href="#" onclick="alert('Интеграция со Stripe/RevenueCat будет добавлена позже')" class="w-full py-4 rounded-xl font-bold text-center bg-gradient-to-r from-brand-600 to-accent-600 hover:opacity-90 transition text-white shadow-lg shadow-brand-500/25">Выбрать</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clips Section -->
+        <section id="clips" class="w-full mb-20 pt-8">
+            <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                <span class="w-8 h-1 bg-accent-500 rounded-full"></span> Скрепки (Clips)
+            </h2>
+            <p class="text-slate-400 mb-8">Внутренняя валюта для супер-лайков, бустов и подарков</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pack 1 -->
+                <div class="card rounded-2xl p-6 text-center transition hover:bg-slate-800/50">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 text-3xl">📎</div>
+                    <h3 class="text-xl font-bold mb-1">5 Скрепок</h3>
+                    <div class="text-2xl font-bold text-brand-400 mb-6">99 ₽</div>
+                    <a href="#" class="block w-full py-3 rounded-lg font-semibold bg-slate-800 hover:bg-slate-700 transition">Купить</a>
+                </div>
+                
+                <!-- Pack 2 -->
+                <div class="card rounded-2xl p-6 text-center relative transition hover:bg-slate-800/50 border-accent-500/30">
+                    <div class="absolute top-0 right-0 bg-accent-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-xl font-bold">ХИТ</div>
+                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 text-3xl">📎📎</div>
+                    <h3 class="text-xl font-bold mb-1">15 Скрепок</h3>
+                    <div class="text-2xl font-bold text-brand-400 mb-6">249 ₽</div>
+                    <a href="#" class="block w-full py-3 rounded-lg font-semibold bg-accent-600 hover:bg-accent-500 text-white transition">Купить</a>
+                </div>
+
+                <!-- Pack 3 -->
+                <div class="card rounded-2xl p-6 text-center transition hover:bg-slate-800/50">
+                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 text-3xl">🗄️</div>
+                    <h3 class="text-xl font-bold mb-1">50 Скрепок</h3>
+                    <div class="text-2xl font-bold text-brand-400 mb-6">699 ₽</div>
+                    <a href="#" class="block w-full py-3 rounded-lg font-semibold bg-slate-800 hover:bg-slate-700 transition">Купить</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="mt-10 text-center text-slate-500 text-sm">
+            <p>После покупки необходимо будет войти в свой аккаунт для начисления.</p>
+        </div>
+    </main>
+
+    <footer class="py-8 border-t border-white/10 z-10 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+            <div>&copy; 2026 Clip Together. Все права защищены.</div>
+            <div class="flex gap-6">
+                <a href="https://policies.clip-together.com/privacy" class="hover:text-slate-300 transition">Конфиденциальность</a>
+                <a href="https://policies.clip-together.com/terms" class="hover:text-slate-300 transition">Условия</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
